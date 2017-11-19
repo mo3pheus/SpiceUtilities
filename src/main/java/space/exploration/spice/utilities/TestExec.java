@@ -25,6 +25,6 @@ public class TestExec {
 //        }
 
         String inputTime = "09-30-2016~15:32:32";
-        System.out.println(TimeUtils.getSpacecraftTime(inputTime));
+        System.out.println((new TimeUtils()).getSpacecraftTime(inputTime));
     }
 }
