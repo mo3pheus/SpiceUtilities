@@ -36,21 +36,6 @@ void main(int argc, char** argv)
 		SpiceDouble et,spacecraftTime;			/* ephemerisTime, spacecraftTime   */
 		static SpiceChar sclkch[100];			/* spacecraftTime String	   */
 
-		//printf(SEPARATOR);
-		//printf("This is a simple C-utility program written to convert between UTC and SCLK\n");
-
-		/* Check if arguments have been passed */
-		/*if( argc > 0 )
-		{
-			printf("\nNumber of arguments passed = %d", argc);
-			for(int i=0; i<argc; i++)
-			{
-				printf("%s\n",argv[i]);
-				printf(SEPARATOR);
-			}
-		}
-
-		printf(SEPARATOR);*/
 		int i = 0;
 		for(i=0; i < strlen(argv[1]); i++)
 		{
@@ -72,13 +57,10 @@ void main(int argc, char** argv)
 		------------------------------------------------------------------------------------*/
 		furnsh_c(LEAP_SECONDS_KERNEL);
 		furnsh_c(SCLK_KERNEL);
-//		printf("\nUser Entered UTC Time is %s ::", userUTCTime);
 		str2et_c(userUTCTime, &et);
-//		printf("\nEphemeris Time = %f .\n",et);
 
 		/* Convert et into sclk time */
 		sce2s_c( -76, et, 100,  sclkch);
 
 		printf("%s", sclkch);
-		//return(sclkch);
 	}

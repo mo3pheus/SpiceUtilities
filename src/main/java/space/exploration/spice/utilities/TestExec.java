@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 public class TestExec {
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
 //        Runtime           runtime = Runtime.getRuntime();
 //        Process           process = runtime.exec(args);
 //        InputStream       is      = process.getInputStream();
@@ -25,6 +25,6 @@ public class TestExec {
 //        }
 
         String inputTime = "09-30-2016~15:32:32";
-        System.out.println(TimeUtils.getSpacecraftTime(inputTime));
+        System.out.println(TimeUtils.getSpacecraftTime("/home/sanket/Documents/workspace/SpiceUtilities/src/main/resources/SCLK/msl", inputTime));
     }
 }
