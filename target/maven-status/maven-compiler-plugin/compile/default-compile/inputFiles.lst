@@ -146,6 +146,7 @@
 /home/sanket/Documents/workspace/SpiceUtils/src/main/java/spice/basic/Ellipsoid.java
 /home/sanket/Documents/workspace/SpiceUtils/src/main/java/spice/basic/EulerState.java
 /home/sanket/Documents/workspace/SpiceUtils/src/main/java/spice/tspice/TestTriangularPlate.java
+/home/sanket/Documents/workspace/SpiceUtils/src/main/java/space/exploration/spice/utilities/TestExec.java
 /home/sanket/Documents/workspace/SpiceUtils/src/main/java/spice/tspice/TestTDBDuration.java
 /home/sanket/Documents/workspace/SpiceUtils/src/main/java/spice/basic/GFRayInFOVSearch.java
 /home/sanket/Documents/workspace/SpiceUtils/src/main/java/spice/basic/TDTDuration.java

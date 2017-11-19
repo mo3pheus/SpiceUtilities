@@ -87,13 +87,5 @@
             <artifactId>protobuf-java</artifactId>
             <version>3.4.0</version>
         </dependency>
-        <dependency>
-            <groupId>spice.utilities</groupId>
-            <artifactId>spice.toolkit</artifactId>
-            <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>/home/sanket/Documents/workspace/SpiceUtils/src/main/resources/cspice/msl.out</systemPath>
-        </dependency>
-
     </dependencies>
 </project>

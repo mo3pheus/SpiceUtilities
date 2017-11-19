@@ -58,6 +58,7 @@ spice/basic/TDTDuration.class
 spice/tspice/TestPointingRecord.class
 spice/basic/KernelVarStringComponent.class
 spice/tspice/TestDSK02.class
+space/exploration/spice/utilities/TestExec.class
 spice/basic/TDTTime.class
 spice/tspice/TestRay.class
 spice/tspice/TestSpiceWindow.class

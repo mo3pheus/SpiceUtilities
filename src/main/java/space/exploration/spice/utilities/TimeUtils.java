@@ -1,21 +1,30 @@
 package space.exploration.spice.utilities;
 
-import spice.basic.*;
-import spice.basic.CSPICE;
-import spice.basic.SpiceErrorException;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
 
 public class TimeUtils {
 
-    private static final String LEAP_SECONDS_FILE = "/mslp_1000.data/lsk/naif0012.tls";
-    private static final String SCLK_FILE = "/mslsp_1000/data/sclk/msl_76_sclkscet_refit_n4.tsc";
+    private static final String SCLK_COMPUTATION_FILE = "/SCLK/msl";
 
-    public static void main(String[] args){
+    public static String getSpacecraftTime(String utcTime) {
+        Runtime runtime = Runtime.getRuntime();
+        String  output  = "";
         try {
-            CSPICE.furnsh(LEAP_SECONDS_FILE);
-            CSPICE.furnsh(SCLK_FILE);
-            System.out.println(CSPICE.str2et("09-08-2016 15:32:32"));
-        } catch (SpiceErrorException e) {
+            URL url = TimeUtils.class.getResource(SCLK_COMPUTATION_FILE);
+            String[]          commands = {url.getPath(), utcTime};
+            Process           process  = runtime.exec(commands);
+            InputStream       is       = process.getInputStream();
+            InputStreamReader isr      = new InputStreamReader(is);
+            BufferedReader    br       = new BufferedReader(isr);
+            output = br.readLine();
+            br.close();
+        } catch (IOException e) {
             e.printStackTrace();
         }
+        return output;
     }
 }
