@@ -62,5 +62,8 @@ void main(int argc, char** argv)
 		/* Convert et into sclk time */
 		sce2s_c( -76, et, 100,  sclkch);
 
-		printf("%s", sclkch);
+		SpiceChar calTime[STR_LEN];
+		etcal_c(et, STR_LEN, calTime);
+
+		printf("%s,%f,%s", sclkch, et, calTime);
 	}

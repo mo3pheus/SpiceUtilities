@@ -31,6 +31,7 @@ spice/basic/SpiceWindow.class
 spice/basic/SpiceKernelNotLoadedException.class
 spice/basic/JEDDuration.class
 spice/basic/GFDistanceSearch.class
+space/exploration/spice/utilities/TimeUtils$SCHEMA.class
 spice/basic/TDTDuration.class
 spice/tspice/TestPointingRecord.class
 spice/basic/KernelVarStringComponent.class
