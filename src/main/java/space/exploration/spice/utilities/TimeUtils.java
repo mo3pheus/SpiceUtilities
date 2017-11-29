@@ -1,7 +1,5 @@
 package space.exploration.spice.utilities;
 
-import org.apache.commons.io.IOUtils;
-
 import java.io.*;
 
 public class TimeUtils {
@@ -25,53 +23,14 @@ public class TimeUtils {
         }
     }
 
-    private File getFilePath() {
-        //String      clockFilePath        = "/mslClock";
-        String      clockFilePath        = "/SCLK/msl";
-        InputStream clockFileInputStream = TimeUtils.class.getResourceAsStream(clockFilePath);
-        File        clockFile            = new File("clockFile");
-        clockFile.setReadable(true);
-        clockFile.setExecutable(true);
-        try {
-            Thread.sleep(1000);
-            OutputStream outputStream = new FileOutputStream(clockFile);
-            IOUtils.copy(clockFileInputStream, outputStream);
-            outputStream.close();
-        } catch (IOException io) {
-            io.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        return clockFile;
-    }
-
     public TimeUtils() {
-        clockFile = getFilePath();
+        clockFile = ExecUtils.getExecutionFile("/SCLK/msl");
     }
 
     public void updateClock(String utcTime) {
         this.utcTime = utcTime;
-        getSpacecraftTimePacket();
-    }
 
-    private void getSpacecraftTimePacket() {
-        Runtime runtime = Runtime.getRuntime();
-        String  output  = "";
-        try {
-            String[]          commands = {"./" + clockFile.getPath(), utcTime};
-            Process           process  = runtime.exec(commands);
-            InputStream       is       = process.getInputStream();
-            InputStreamReader isr      = new InputStreamReader(is);
-            BufferedReader    br       = new BufferedReader(isr);
-            output = br.readLine();
-            br.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        String[] outputParts = output.split(",");
-
+        String[] outputParts = ExecUtils.getExecutionOutput(clockFile,this.utcTime);
         sclkTime = outputParts[SCHEMA.SCLK_STR.value];
         ephemerisTime = Double.parseDouble(outputParts[SCHEMA.EPHEMERIS_TIME.value]);
         calendarTime = outputParts[SCHEMA.CALENDAR_TIME.value];

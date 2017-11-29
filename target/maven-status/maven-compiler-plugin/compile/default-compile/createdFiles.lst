@@ -16,6 +16,7 @@ spice/tspice/TestAngularUnits.class
 spice/basic/TimeConstants.class
 spice/tspice/TestPointingAndAVRecord.class
 spice/basic/TDBTime.class
+space/exploration/spice/utilities/PositionUtils.class
 spice/tspice/TestTextIO.class
 spice/basic/GFTargetInFOVSearch.class
 spice/tspice/TestUnits.class
@@ -60,6 +61,7 @@ spice/basic/SurfaceInterceptWithDSKInfo$RayInputs.class
 spice/basic/SpiceException.class
 spice/basic/BodyCode.class
 spice/tspice/TestRayPlaneIntercept.class
+space/exploration/spice/utilities/PositionUtilsTest.class
 spice/tspice/TestInstrument.class
 spice/tspice/TestFOV.class
 spice/basic/DSKToleranceKey.class
@@ -159,6 +161,7 @@ spice/basic/AngularUnits.class
 spice/tspice/TestMatrix66.class
 spice/basic/OccultationState.class
 spice/basic/GFUserDefinedScalarSearch.class
+space/exploration/spice/utilities/ExecUtils.class
 spice/tspice/TestPositionVector.class
 spice/basic/GFPositionCoordinateSearch.class
 spice/basic/SurfacePoint.class

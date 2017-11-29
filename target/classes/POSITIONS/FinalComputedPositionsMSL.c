@@ -30,12 +30,9 @@
 
 
 void main(int argc, char** argv){
-
 	/*--------------------------------------------------------------------------------------------
 	*	Load the required kernels
 	--------------------------------------------------------------------------------------------*/
-	printf(SEPARATOR);
-	printf("\n Welcome to PositionCalc!");
 	furnsh_c(GENERIC_LSK);
 	furnsh_c(CURIOSITY_SCLK);
 	furnsh_c(MERGED_MISSION_DATA_SPK);
@@ -50,7 +47,6 @@ void main(int argc, char** argv){
 	furnsh_c(CURIOSITY_ROVER_CK_2);
 	furnsh_c(CURIOSITY_ROVER_CK_3);
 	furnsh_c(CURIOSITY_ROVER_CK_4);
-	printf(SEPARATOR);
 
 	/*-------------------------------------------------------------------------------------------
 	* Variable declarations
@@ -69,21 +65,7 @@ void main(int argc, char** argv){
 	SpiceDouble bsight[3];
 	SpiceDouble angularSeparation;
 
-        printf(SEPARATOR);
-        printf("This is a c program to get the required position vectors\n");
-
         /* Check if arguments have been passed */
-        if( argc > 0 )
-        {
-	        printf("\nNumber of arguments passed = %d", argc);
-                for(int i=0; i<argc; i++)
-        	        {
-                	        printf("%s\n",argv[i]);
-                                printf(SEPARATOR);
-                        }
-         }
-
-         printf(SEPARATOR);
          int i = 0;
 	 int argumentLength = strlen(argv[1]);
          for(i=0; i < argumentLength; i++)
@@ -105,17 +87,13 @@ void main(int argc, char** argv){
 	/*------------------------------------------------------------------------------------
         * Get the ephemeris time
         ------------------------------------------------------------------------------------*/
-	printf(SEPARATOR);
 	str2et_c( userUTCTime, &et);
-	printf("\n Computed ephemeris time is :: %lf \n", et );
-	printf(SEPARATOR);
 
          /*------------------------------------------------------------------------------------
          * Find the state vector for Curiosity
          ------------------------------------------------------------------------------------*/
-	printf(SEPARATOR);
 	spkezr_c( "MSL", et, "J2000", "LT+S", "EARTH", stateCuriosity, &lightTimeMSLEarth );
-	printf("\n State Vector for Curiosity as seen from Earth at above mentioned ephemerisTime\n ");
+	/*printf("\n State Vector for Curiosity as seen from Earth at above mentioned ephemerisTime\n ");
         printf(  "\n      X = %16.3f\n", stateCuriosity[0]       );
         printf ( "      Y = %16.3f\n", stateCuriosity[1]       );
         printf ( "      Z = %16.3f\n", stateCuriosity[2]       );
@@ -124,15 +102,14 @@ void main(int argc, char** argv){
         printf ( "     VZ = %16.3f\n", stateCuriosity[5]       );
 
 	printf("\nLight time between Earth and Curiosity at %f :: is %f ", et, lightTimeMSLEarth );
-	printf(SEPARATOR);
+	printf(SEPARATOR);*/
 
 	/*------------------------------------------------------------------------------------
          * Find the state vector for Earth
          ------------------------------------------------------------------------------------*/
 	double lightTimeEarthMSL_state = 0.0;
-	printf(SEPARATOR);
 	spkezr_c( "EARTH", et, "J2000", "LT+S", "MSL", stateEarth, &lightTimeEarthMSL_state );
-	printf("\n State Vector for Earth as seen from Curiosity at above mentioned ephemerisTime\n ");
+	/*printf("\n State Vector for Earth as seen from Curiosity at above mentioned ephemerisTime\n ");
         printf(  "\n      X = %16.3f\n", stateEarth[0]       );
         printf ( "      Y = %16.3f\n", stateEarth[1]       );
         printf ( "      Z = %16.3f\n", stateEarth[2]       );
@@ -141,7 +118,7 @@ void main(int argc, char** argv){
         printf ( "     VZ = %16.3f\n", stateEarth[5]       );
 
 	printf("\nLight time between Earth and Curiosity at %f :: is %f ", et, lightTimeEarthMSL_state );
-	printf(SEPARATOR);
+	printf(SEPARATOR);*/
 
 	
 	/*------------------------------------------------------------------------------------
@@ -149,13 +126,13 @@ void main(int argc, char** argv){
          ------------------------------------------------------------------------------------*/
 	double lightTimeEarthMSL;
 	spkpos_c("EARTH", et, "J2000", "LT+S", "MSL", posEarthCuriosity, & lightTimeEarthMSL);
-	printf(SEPARATOR);
+	/*printf(SEPARATOR);
 	printf("\n Position Vector for Earth as seen from Curiosity at above mentioned ephemerisTime\n ");
         printf(  "\n      X = %16.3f\n", posEarthCuriosity[0]       );
         printf ( "      Y = %16.3f\n", posEarthCuriosity[1]       );
         printf ( "      Z = %16.3f\n", posEarthCuriosity[2]       );
 	printf("\n Light time between Earth and Curiosity %f", lightTimeEarthMSL);
-        printf(SEPARATOR);
+        printf(SEPARATOR);*/
 
 	/*------------------------------------------------------------------------------------
         * From the Curiosity frames kernel we know that the HG Antenna is aligned with the
@@ -180,7 +157,10 @@ void main(int argc, char** argv){
 	* seen from Curiosity at et, in the J2000 frame with the Curiosity HGA boresight
         ------------------------------------------------------------------------------------*/
 	convrt_c( vsep_c( bsight, posEarthCuriosity ), "RADIANS", "DEGREES", &angularSeparation );
-	printf(" Angular separation between the apparent position of Earth and the\n CURIOSITY high gain antenna boresight (degrees) :\n" );
-	printf(" %16.3f\n", angularSeparation);
-	printf(SEPARATOR);	
+/*	printf(" Angular separation between the apparent position of Earth and the\n CURIOSITY high gain antenna boresight (degrees) :\n" );
+	printf(" %16.3f\n", angularSeparation);*/
+
+	//et, stC0, stC1, stC2, stC3, stC4, stC5, ltCE, stE0, stE1, stE2, stE3, stE4, stE5, ltEC, posEC0, posEC1, posEC2, ltEC, angularSeparation
+	printf("%f,%16.3f,%16.3f,%16.3f,%16.3f,%16.3f,%16.3f,%16.3f,%16.3f,%16.3f,%16.3f,%16.3f,%16.3f, %16.3f, %16.3f, %16.3f,%16.3f,%16.3f, %16.3f, %16.3f\n", et, stateCuriosity[0], stateCuriosity[1], stateCuriosity[2], stateCuriosity[3], stateCuriosity[4], stateCuriosity[5], lightTimeMSLEarth, stateEarth[0], stateEarth[1], stateEarth[2], stateEarth[3], stateEarth[4], stateEarth[5], lightTimeEarthMSL_state, posEarthCuriosity[0], posEarthCuriosity[1], posEarthCuriosity[2], lightTimeEarthMSL, angularSeparation);
+
 }

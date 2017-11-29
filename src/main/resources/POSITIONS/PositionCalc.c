@@ -5,7 +5,6 @@
 #include "SpiceUsr.h"
 #include <string.h>
 
-//#define META_KERNEL "mslDataMetaKernel.mkl"
 #define GENERIC_LSK "/home/sanket/Documents/Data/curiosityData/curiositySpiceData2016_2017/mslsp_1000/data/lsk/naif0012.tls"
 #define CURIOSITY_SCLK "/home/sanket/Documents/Data/curiosityData/curiositySpiceData2016_2017/mslsp_1000/data/sclk/msl_76_sclkscet_refit_n4.tsc"
 #define MERGED_MISSION_DATA_SPK "/home/sanket/Documents/workspace/SpiceUtilities/src/main/resources/mslsp_1000/data/spk/mergedCuriosityData.spk"
@@ -58,12 +57,12 @@ void main(int argc, char** argv){
 	--------------------------------------------------------------------------------------------*/
 	SpiceChar userUTCTime[STR_LEN];                 /* user entered UTC Time           */
         SpiceDouble et,spacecraftTime;                  /* ephemerisTime, spacecraftTime   */
-	SpiceDouble lightTimeMSLEarth;
+	SpiceDouble lightTimeMSLEarth;			/* one way light time earth to msl */
 	static SpiceChar sclkch[100];                   /* spacecraftTime String           */
-	SpiceDouble bfixst[6];
-	SpiceDouble stateCuriosity[6];
-	SpiceDouble posnCuriosity[3];
-	SpiceDouble posnEarthWRTCuriosity[3];		/* earth wrt curiosity in J2000	   */
+	SpiceDouble bfixst[6];				/* antenna boresight vector        */
+	SpiceDouble stateCuriosity[6];			/* state vector for curiosity      */
+	SpiceDouble stateEarth[6];			/* state vector for earth          */
+	SpiceDouble posnCuriosity[3];			/* position of Curiosity 	   */
 	SpiceDouble xFormMatrix[6][6];
 	SpiceDouble xformHG_J2000[3][3];
 	SpiceDouble posEarthCuriosity[3];
@@ -125,6 +124,23 @@ void main(int argc, char** argv){
         printf ( "     VZ = %16.3f\n", stateCuriosity[5]       );
 
 	printf("\nLight time between Earth and Curiosity at %f :: is %f ", et, lightTimeMSLEarth );
+	printf(SEPARATOR);
+
+	/*------------------------------------------------------------------------------------
+         * Find the state vector for Earth
+         ------------------------------------------------------------------------------------*/
+	double lightTimeEarthMSL_state = 0.0;
+	printf(SEPARATOR);
+	spkezr_c( "EARTH", et, "J2000", "LT+S", "MSL", stateEarth, &lightTimeEarthMSL_state );
+	printf("\n State Vector for Earth as seen from Curiosity at above mentioned ephemerisTime\n ");
+        printf(  "\n      X = %16.3f\n", stateEarth[0]       );
+        printf ( "      Y = %16.3f\n", stateEarth[1]       );
+        printf ( "      Z = %16.3f\n", stateEarth[2]       );
+        printf ( "     VX = %16.3f\n", stateEarth[3]       );
+        printf ( "     VY = %16.3f\n", stateEarth[4]       );
+        printf ( "     VZ = %16.3f\n", stateEarth[5]       );
+
+	printf("\nLight time between Earth and Curiosity at %f :: is %f ", et, lightTimeEarthMSL_state );
 	printf(SEPARATOR);
 
 	
