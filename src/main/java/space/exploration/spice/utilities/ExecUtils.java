@@ -28,6 +28,8 @@ public class ExecUtils {
     }
 
     public static String[] getExecutionOutput(File executionFile, String utcTime) {
+        executionFile.setReadable(true);
+        executionFile.setExecutable(true);
         Runtime runtime = Runtime.getRuntime();
         String  output  = "";
         try {
