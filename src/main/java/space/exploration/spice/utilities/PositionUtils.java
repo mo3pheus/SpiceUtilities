@@ -5,23 +5,28 @@ import space.exploration.communications.protocol.spice.MSLRelativePositions;
 import java.io.*;
 
 public class PositionUtils {
-    private File positionsCalcFile = ExecUtils.getExecutionFile("/POSITIONS/finalPositionCalc");
-    private String utcTime = "";
+    private File   positionsCalcFile = ExecUtils.getExecutionFile("/POSITIONS/finalPositionCalc");
+    private String utcTime           = "";
 
-    public PositionUtils(String utcTime){
+    public PositionUtils() {
+
+    }
+
+    public void setUtcTime(String utcTime) {
         this.utcTime = utcTime;
     }
 
-    public String[] getPositionData(){
-        return ExecUtils.getExecutionOutput(positionsCalcFile,utcTime);
+    public String[] getPositionData() {
+        return ExecUtils.getExecutionOutput(positionsCalcFile, utcTime);
     }
 
-    public MSLRelativePositions.MSLRelPositionsPacket getPositionPacket(){
+    public MSLRelativePositions.MSLRelPositionsPacket getPositionPacket() {
         /*et, stC0, stC1, stC2, stC3, stC4, stC5, ltCE, stE0, stE1, stE2, stE3, stE4, stE5, ltEC, posEC0, posEC1,
         posEC2, ltEC, angularSeparation*/
-        MSLRelativePositions.MSLRelPositionsPacket.Builder mBuilder = MSLRelativePositions.MSLRelPositionsPacket.newBuilder();
+        MSLRelativePositions.MSLRelPositionsPacket.Builder mBuilder = MSLRelativePositions.MSLRelPositionsPacket
+                .newBuilder();
 
-        String[] positionsData = ExecUtils.getExecutionOutput(positionsCalcFile,utcTime);
+        String[] positionsData = ExecUtils.getExecutionOutput(positionsCalcFile, utcTime);
 
         // Ephemeris Time
         mBuilder.setEphemerisTime(Double.parseDouble(positionsData[0]));

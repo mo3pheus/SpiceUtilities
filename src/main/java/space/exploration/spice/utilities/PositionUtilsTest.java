@@ -4,7 +4,8 @@ public class PositionUtilsTest {
     public static void main(String[] args) {
 
         String        utcTime       = "09/08/2016~14:32:32";
-        PositionUtils positionUtils = new PositionUtils(utcTime);
+        PositionUtils positionUtils = new PositionUtils();
+        positionUtils.setUtcTime(utcTime);
         for (String s : positionUtils.getPositionData()) {
             System.out.println(s);
         }
