@@ -22,7 +22,7 @@
 *****************************************************************************************************/
 #define SEPARATOR "====================================================================================\n"
 #define LEAP_SECONDS_KERNEL "/home/sanket/Documents/Data/curiosityData/curiositySpiceData2016_2017/mslsp_1000/data/lsk/naif0012.tls"
-#define SCLK_KERNEL "/home/sanket/Documents/Data/curiosityData/curiositySpiceData2016_2017/mslsp_1000/data/sclk/msl_76_sclkscet_refit_n4.tsc"
+#define SCLK_KERNEL "/home/sanket/Documents/workspace/SpiceUtilities/src/main/resources/mslsp_1000/data/sclk/msl_lmst_ops120808_v1.tsc"
 #define STR_LEN 50
 
 /* Main Call 
@@ -60,7 +60,8 @@ void main(int argc, char** argv)
 		str2et_c(userUTCTime, &et);
 
 		/* Convert et into sclk time */
-		sce2s_c( -76, et, 100,  sclkch);
+		//sce2s_c( -76, et, 100,  sclkch);
+	        sce2s_c   ( -76900, et, STR_LEN, sclkch );
 
 		SpiceChar calTime[STR_LEN];
 		etcal_c(et, STR_LEN, calTime);

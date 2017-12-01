@@ -12,6 +12,7 @@ public class TestExec {
         System.out.println("Ephemeris Time is :: " + timeUtils.getEphemerisTime());
         System.out.println("SclkTime is :: " + timeUtils.getSclkTime());
         System.out.println("UTCTime is :: " + timeUtils.getUtcTime());
+        System.out.println("Sol is ::" + timeUtils.getSol());
         System.out.println("Applicable timeFrame is :: " + timeUtils.getApplicableTimeFrame());
     }
 }

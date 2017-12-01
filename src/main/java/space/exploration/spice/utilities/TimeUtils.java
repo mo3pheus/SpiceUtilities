@@ -30,7 +30,7 @@ public class TimeUtils {
     public void updateClock(String utcTime) {
         this.utcTime = utcTime;
 
-        String[] outputParts = ExecUtils.getExecutionOutput(clockFile,this.utcTime);
+        String[] outputParts = ExecUtils.getExecutionOutput(clockFile, this.utcTime);
         sclkTime = outputParts[SCHEMA.SCLK_STR.value];
         ephemerisTime = Double.parseDouble(outputParts[SCHEMA.EPHEMERIS_TIME.value]);
         calendarTime = outputParts[SCHEMA.CALENDAR_TIME.value];
@@ -50,6 +50,11 @@ public class TimeUtils {
 
     public String getSclkTime() {
         return sclkTime;
+    }
+
+    public int getSol() {
+        String solPart = sclkTime.split("/")[1];
+        return Integer.parseInt(solPart.split(":")[0]);
     }
 
     public String getUtcTime() {
