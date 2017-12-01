@@ -10,7 +10,7 @@ public class ExecUtils {
 
     public static File getExecutionFile(String filePath) {
         InputStream executionFileStream = TimeUtils.class.getResourceAsStream(filePath);
-        File        executionsFile      = new File(EXECUTIONS_FILE);
+        File        executionsFile      = new File(EXECUTIONS_FILE + filePath.replace("/", "_"));
         executionsFile.setReadable(true);
         executionsFile.setExecutable(true);
         try {
