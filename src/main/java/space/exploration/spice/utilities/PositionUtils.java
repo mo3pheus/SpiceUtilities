@@ -5,8 +5,9 @@ import space.exploration.communications.protocol.spice.MSLRelativePositions;
 import java.io.*;
 
 public class PositionUtils {
-    private File   positionsCalcFile = ExecUtils.getExecutionFile("/POSITIONS/finalPositionCalc");
-    private String utcTime           = "";
+    private static final double ALIGNMENT_THRESHOLD = 1.0d;
+    private              File   positionsCalcFile   = ExecUtils.getExecutionFile("/POSITIONS/finalPositionCalc");
+    private              String utcTime             = "";
 
     public PositionUtils() {
 
@@ -31,7 +32,7 @@ public class PositionUtils {
         // Ephemeris Time
         mBuilder.setEphemerisTime(Double.parseDouble(positionsData[0]));
 
-        // StateCuriosity
+        // x,y,z,vx,vy,vz
         mBuilder.addStateCuriosity(Double.parseDouble(positionsData[1]));
         mBuilder.addStateCuriosity(Double.parseDouble(positionsData[2]));
         mBuilder.addStateCuriosity(Double.parseDouble(positionsData[3]));
@@ -40,7 +41,7 @@ public class PositionUtils {
         mBuilder.addStateCuriosity(Double.parseDouble(positionsData[6]));
         mBuilder.setOwltMSLEarth(Double.parseDouble(positionsData[7]));
 
-        // StateEarth
+        // x,y,z,vx,vy,vz
         mBuilder.addStateEarth(Double.parseDouble(positionsData[8]));
         mBuilder.addStateEarth(Double.parseDouble(positionsData[9]));
         mBuilder.addStateEarth(Double.parseDouble(positionsData[10]));
@@ -49,7 +50,7 @@ public class PositionUtils {
         mBuilder.addStateEarth(Double.parseDouble(positionsData[13]));
         mBuilder.setOwltEarthMSL(Double.parseDouble(positionsData[14]));
 
-        //Position Earth w.r.t Curiosity
+        // pX, pY, pZ
         mBuilder.addPositionEarthWRTCuriosity(Double.parseDouble(positionsData[15]));
         mBuilder.addPositionEarthWRTCuriosity(Double.parseDouble(positionsData[16]));
         mBuilder.addPositionEarthWRTCuriosity(Double.parseDouble(positionsData[17]));
@@ -57,6 +58,12 @@ public class PositionUtils {
 
         //Angular separation Earth vs MSL HGA
         mBuilder.setAngSepHGAEarth(Double.parseDouble(positionsData[19]));
+
+        //set HGA Pass boolean
+        mBuilder.setHgaPass(Math.abs(Double.parseDouble(positionsData[19])) < ALIGNMENT_THRESHOLD);
+
+        //utcTime
+        mBuilder.setUtcTime(utcTime);
 
         return mBuilder.build();
     }
