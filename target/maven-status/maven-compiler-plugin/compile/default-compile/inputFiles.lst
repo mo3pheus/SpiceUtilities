@@ -66,6 +66,7 @@
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/tspice/TestRADecCoordinates.java
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/tspice/TestTimeSystem.java
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/tspice/TestEulerAngles.java
+/home/sanket/Documents/workspace/SpiceUtilities/src/main/java/space/exploration/spice/dataUpload/SclkDataUpload.java
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/basic/OccultationState.java
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/basic/ReferenceFrame.java
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/tspice/TestSubObserverRecord.java

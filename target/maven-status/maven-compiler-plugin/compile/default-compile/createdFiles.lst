@@ -97,6 +97,7 @@ spice/basic/OsculatingElements.class
 spice/tspice/TestEllipsoid.class
 spice/basic/Coordinates.class
 spice/tspice/TestTerminatorPoint.class
+space/exploration/spice/dataUpload/SclkDataUpload.class
 spice/testutils/Testutils.class
 spice/basic/VelocityVector.class
 spice/tspice/TestGeodeticCoordinates.class
