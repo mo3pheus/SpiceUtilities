@@ -6,7 +6,8 @@
 #include <string.h>
 
 #define GENERIC_LSK "/home/sanket/Documents/Data/curiosityData/curiositySpiceData2016_2017/mslsp_1000/data/lsk/naif0012.tls"
-#define CURIOSITY_SCLK "/home/sanket/Documents/Data/curiosityData/curiositySpiceData2016_2017/mslsp_1000/data/sclk/msl_76_sclkscet_refit_n4.tsc"
+#define CURIOSITY_SCLK "/home/sanket/Documents/Data/curiosityData/curiositySpiceData2016_2017/mslsp_1000/data/sclk/msl_lmst_ops120808_v1.tsc"
+#define CURIOSITY_SCLK_2 "/home/sanket/Documents/Data/curiosityData/curiositySpiceData2016_2017/mslsp_1000/data/sclk/msl_76_sclkscet_refit_n4.tsc"
 #define MERGED_MISSION_DATA_SPK "/home/sanket/Documents/workspace/SpiceUtilities/src/main/resources/mslsp_1000/data/spk/mergedCuriosityData.spk"
 #define SOLAR_SYSTEM_EPHEMERIS_SPK "/home/sanket/Documents/Data/SpiceData/C/cspice/doc/html/lessons/remote_sensing/kernels/spk/981005_PLTEPH-DE405S.bsp"
 #define CURIOSITY_HGA_CK_1 "/home/sanket/Documents/workspace/SpiceUtilities/src/main/resources/mslsp_1000/data/ck/"
@@ -35,6 +36,7 @@ void main(int argc, char** argv){
 	--------------------------------------------------------------------------------------------*/
 	furnsh_c(GENERIC_LSK);
 	furnsh_c(CURIOSITY_SCLK);
+	furnsh_c(CURIOSITY_SCLK_2);
 	furnsh_c(MERGED_MISSION_DATA_SPK);
 	furnsh_c(SOLAR_SYSTEM_EPHEMERIS_SPK);
 	furnsh_c(CURIOSITY_FRAMES_KERNEL);
@@ -157,10 +159,15 @@ void main(int argc, char** argv){
 	* seen from Curiosity at et, in the J2000 frame with the Curiosity HGA boresight
         ------------------------------------------------------------------------------------*/
 	convrt_c( vsep_c( bsight, posEarthCuriosity ), "RADIANS", "DEGREES", &angularSeparation );
-/*	printf(" Angular separation between the apparent position of Earth and the\n CURIOSITY high gain antenna boresight (degrees) :\n" );
+	/*printf(" Angular separation between the apparent position of Earth and the\n CURIOSITY high gain antenna boresight (degrees) :\n" );
 	printf(" %16.3f\n", angularSeparation);*/
 
+	/*-----------------------------------------------------------------------------------
+	* Get the sclk string as well 
+	-----------------------------------------------------------------------------------*/
+	sce2s_c   ( -76900, et, STR_LEN, sclkch );
+
 	//et, stC0, stC1, stC2, stC3, stC4, stC5, ltCE, stE0, stE1, stE2, stE3, stE4, stE5, ltEC, posEC0, posEC1, posEC2, ltEC, angularSeparation
-	printf("%f,%16.3f,%16.3f,%16.3f,%16.3f,%16.3f,%16.3f,%16.3f,%16.3f,%16.3f,%16.3f,%16.3f,%16.3f, %16.3f, %16.3f, %16.3f,%16.3f,%16.3f, %16.3f, %16.3f\n", et, stateCuriosity[0], stateCuriosity[1], stateCuriosity[2], stateCuriosity[3], stateCuriosity[4], stateCuriosity[5], lightTimeMSLEarth, stateEarth[0], stateEarth[1], stateEarth[2], stateEarth[3], stateEarth[4], stateEarth[5], lightTimeEarthMSL_state, posEarthCuriosity[0], posEarthCuriosity[1], posEarthCuriosity[2], lightTimeEarthMSL, angularSeparation);
+	printf("%f,%16.3f,%16.3f,%16.3f,%16.3f,%16.3f,%16.3f,%16.3f,%16.3f,%16.3f,%16.3f,%16.3f,%16.3f, %16.3f, %16.3f, %16.3f,%16.3f,%16.3f, %16.3f, %16.3f, %s\n", et, stateCuriosity[0], stateCuriosity[1], stateCuriosity[2], stateCuriosity[3], stateCuriosity[4], stateCuriosity[5], lightTimeMSLEarth, stateEarth[0], stateEarth[1], stateEarth[2], stateEarth[3], stateEarth[4], stateEarth[5], lightTimeEarthMSL_state, posEarthCuriosity[0], posEarthCuriosity[1], posEarthCuriosity[2], lightTimeEarthMSL, angularSeparation, sclkch);
 
 }

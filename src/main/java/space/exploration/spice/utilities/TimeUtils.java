@@ -1,5 +1,8 @@
 package space.exploration.spice.utilities;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.*;
 
 public class TimeUtils {
@@ -9,6 +12,7 @@ public class TimeUtils {
     private String calendarTime  = "";
     private String sclkTime      = "";
     private String utcTime       = "";
+    private Logger logger        = LoggerFactory.getLogger(TimeUtils.class);
 
     public enum SCHEMA {
         SCLK_STR(0), EPHEMERIS_TIME(1), CALENDAR_TIME(2);
@@ -29,6 +33,7 @@ public class TimeUtils {
 
     public void updateClock(String utcTime) {
         this.utcTime = utcTime;
+        logger.debug(utcTime);
 
         String[] outputParts = ExecUtils.getExecutionOutput(clockFile, this.utcTime);
         sclkTime = outputParts[SCHEMA.SCLK_STR.value];

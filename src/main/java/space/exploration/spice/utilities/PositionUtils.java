@@ -1,5 +1,7 @@
 package space.exploration.spice.utilities;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import space.exploration.communications.protocol.spice.MSLRelativePositions;
 
 import java.io.*;
@@ -8,6 +10,7 @@ public class PositionUtils {
     private static final double ALIGNMENT_THRESHOLD = 1.0d;
     private              File   positionsCalcFile   = ExecUtils.getExecutionFile("/POSITIONS/finalPositionCalc");
     private              String utcTime             = "";
+    private              Logger logger              = LoggerFactory.getLogger(PositionUtils.class);
 
     public PositionUtils() {
 
@@ -15,6 +18,7 @@ public class PositionUtils {
 
     public void setUtcTime(String utcTime) {
         this.utcTime = utcTime;
+        logger.debug(utcTime);
     }
 
     public String[] getPositionData() {
@@ -61,10 +65,17 @@ public class PositionUtils {
 
         //set HGA Pass boolean
         mBuilder.setHgaPass(Math.abs(Double.parseDouble(positionsData[19])) < ALIGNMENT_THRESHOLD);
+        mBuilder.setSclkValue(positionsData[20]);
+        mBuilder.setSol(getSol(positionsData[20]));
 
         //utcTime
         mBuilder.setUtcTime(utcTime);
 
         return mBuilder.build();
+    }
+
+    private int getSol(String sclkTime) {
+        String solPart = sclkTime.split("/")[1];
+        return Integer.parseInt(solPart.split(":")[0]);
     }
 }
