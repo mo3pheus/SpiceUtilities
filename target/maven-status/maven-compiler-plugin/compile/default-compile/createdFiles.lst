@@ -1,4 +1,5 @@
 spice/basic/LatitudinalCoordinates.class
+space/exploration/spice/research/PositionCoverageGaps$1.class
 spice/basic/Ellipse.class
 spice/basic/OccultationCode.class
 spice/basic/SurfaceIntercept.class
@@ -120,6 +121,7 @@ spice/tspice/TestPCK.class
 spice/basic/SPK.class
 spice/tspice/TestDAS.class
 spice/tspice/TestGFOccultationSearch.class
+space/exploration/spice/research/CoverageGapAnalyzer.class
 spice/tspice/TestFrameInfo.class
 spice/basic/AberrationCorrection.class
 spice/tspice/TestDSKDescriptor.class
@@ -128,6 +130,7 @@ spice/basic/DSK02.class
 spice/tspice/TestSphericalCoordinates.class
 spice/basic/EllipsePlaneIntercept.class
 spice/basic/Matrix33.class
+space/exploration/spice/research/PositionCoverageGaps.class
 spice/basic/EllipsoidPointNearPoint.class
 spice/basic/Body.class
 spice/basic/IDCodeNotFoundException.class
@@ -138,7 +141,9 @@ spice/basic/GFSubObserverCoordinateSearch.class
 spice/basic/TextReader.class
 spice/basic/InstrumentCode.class
 spice/basic/Vector6.class
+space/exploration/spice/research/ExecFileHelper.class
 spice/basic/StateRecord.class
+space/exploration/spice/research/ExecHelperTest.class
 space/exploration/spice/utilities/TestExec.class
 spice/basic/TDTTime.class
 spice/tspice/TestRay.class

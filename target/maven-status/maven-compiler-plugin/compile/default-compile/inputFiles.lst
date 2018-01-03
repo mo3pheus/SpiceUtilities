@@ -5,6 +5,7 @@
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/basic/AberrationCorrection.java
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/basic/SurfaceName.java
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/basic/GFConstraint.java
+/home/sanket/Documents/workspace/SpiceUtilities/src/main/java/space/exploration/spice/research/CoverageGapAnalyzer.java
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/basic/Ellipse.java
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/basic/PointingNotFoundException.java
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/tspice/TestGFRangeRateSearch.java
@@ -79,6 +80,7 @@
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/basic/Duration.java
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/tspice/TestVelocityVector.java
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/tspice/TestSCLKTime.java
+/home/sanket/Documents/workspace/SpiceUtilities/src/main/java/space/exploration/spice/research/ExecFileHelper.java
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/tspice/TestRayPlaneIntercept.java
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/tspice/TestDSKProt.java
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/basic/DSK02.java
@@ -111,6 +113,7 @@
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/tspice/TestPointingAndAVRecord.java
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/basic/DAFRecordNotFoundException.java
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/basic/IDCodeNotFoundException.java
+/home/sanket/Documents/workspace/SpiceUtilities/src/main/java/space/exploration/spice/research/PositionCoverageGaps.java
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/basic/EulerState.java
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/basic/RayEllipsoidIntercept.java
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/tspice/TestGFSubObserverCoordinateSearch.java
@@ -225,6 +228,7 @@
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/basic/OsculatingElementsExtended.java
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/basic/Time.java
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/basic/PCK.java
+/home/sanket/Documents/workspace/SpiceUtilities/src/main/java/space/exploration/spice/research/ExecHelperTest.java
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/tspice/TestPositionRecord.java
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/basic/DSKToleranceKey.java
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/tspice/TestSpiceQuaternion.java

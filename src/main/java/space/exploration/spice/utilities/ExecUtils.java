@@ -46,4 +46,24 @@ public class ExecUtils {
 
         return output.split(",");
     }
+
+    public static String[] getExecutionOutput(File executionFile, String fileName1, String fileName2) {
+        executionFile.setReadable(true);
+        executionFile.setExecutable(true);
+        Runtime runtime = Runtime.getRuntime();
+        String  output  = "";
+        try {
+            String[]          commands = {"./" + executionFile.getPath(), fileName1, fileName2};
+            Process           process  = runtime.exec(commands);
+            InputStream       is       = process.getInputStream();
+            InputStreamReader isr      = new InputStreamReader(is);
+            BufferedReader    br       = new BufferedReader(isr);
+            output = br.readLine();
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return output.split(",");
+    }
 }
