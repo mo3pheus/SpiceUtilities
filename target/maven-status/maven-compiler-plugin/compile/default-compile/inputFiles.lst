@@ -123,6 +123,7 @@
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/tspice/TestInstrument.java
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/basic/DAF.java
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/basic/SpiceKernelNotLoadedException.java
+/home/sanket/Documents/workspace/SpiceUtilities/src/main/java/space/exploration/spice/utilities/EphemerisConversionUtil.java
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/basic/PhysicalConstants.java
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/spice/tspice/TestDAS.java
 /home/sanket/Documents/workspace/SpiceUtilities/src/main/java/space/exploration/spice/utilities/ExecUtils.java

@@ -5,13 +5,15 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 
-public class TimeUtils {
+public class EphemerisConversionUtil {
+
+    //    ephFile = ExecUtils.getExecutionFile("/SCLK/ephemeris.out");
+    //
 
     File clockFile = null;
     private double ephemerisTime = 0.0d;
     private String calendarTime  = "";
     private String sclkTime      = "";
-    private String utcTime       = "";
     private Logger logger        = LoggerFactory.getLogger(TimeUtils.class);
 
     public enum SCHEMA {
@@ -27,18 +29,15 @@ public class TimeUtils {
         }
     }
 
-    public TimeUtils() {
-        clockFile = ExecUtils.getExecutionFile("/SCLK/msl");
+    public EphemerisConversionUtil() {
+        clockFile = ExecUtils.getExecutionFile("/SCLK/ephemeris.out");
     }
 
-    public void updateClock(String utcTime) {
-        this.utcTime = utcTime;
-        logger.debug(utcTime);
-
-        String[] outputParts = ExecUtils.getExecutionOutput(clockFile, this.utcTime);
-        sclkTime = outputParts[SCHEMA.SCLK_STR.value];
-        ephemerisTime = Double.parseDouble(outputParts[SCHEMA.EPHEMERIS_TIME.value]);
-        calendarTime = outputParts[SCHEMA.CALENDAR_TIME.value];
+    public void updateClock(String tdbTime) {
+        String[] outputParts = ExecUtils.getExecutionOutput(clockFile, tdbTime);
+        sclkTime = outputParts[TimeUtils.SCHEMA.SCLK_STR.value];
+        ephemerisTime = Double.parseDouble(outputParts[TimeUtils.SCHEMA.EPHEMERIS_TIME.value]);
+        calendarTime = outputParts[TimeUtils.SCHEMA.CALENDAR_TIME.value];
     }
 
     public File getClockFile() {
@@ -62,11 +61,8 @@ public class TimeUtils {
         return Integer.parseInt(solPart.split(":")[0]);
     }
 
-    public String getUtcTime() {
-        return utcTime;
-    }
-
     public String getApplicableTimeFrame() {
         return "APPLICABLE_START_TIME=2000-001T11:58:55.816, APPLICABLE_STOP_TIME=2017-360T19:17:40.149";
     }
+
 }

@@ -85,6 +85,7 @@ spice/basic/NameNotFoundException.class
 spice/tspice/TestCylindricalCoordinates.class
 space/exploration/spice/utilities/TimeUtils.class
 spice/tspice/TestOccultationCode.class
+space/exploration/spice/utilities/EphemerisConversionUtil$SCHEMA.class
 spice/tspice/TestSurfaceInterceptWithDSKInfo.class
 spice/tspice/TestDAF.class
 spice/tspice/TestSPK.class
@@ -115,6 +116,7 @@ spice/basic/Vector3.class
 spice/tspice/TestDSKProt.class
 spice/basic/KernelVarDescriptor.class
 spice/tspice/TestSCLKDuration.class
+space/exploration/spice/utilities/EphemerisConversionUtil.class
 spice/basic/SurfaceIntercept$Inputs.class
 spice/tspice/TestKernelDatabase.class
 spice/tspice/TestPCK.class
