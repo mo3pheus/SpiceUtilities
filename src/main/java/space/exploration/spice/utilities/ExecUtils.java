@@ -27,13 +27,13 @@ public class ExecUtils {
         return executionsFile;
     }
 
-    public static String[] getExecutionOutput(File executionFile, String utcTime) {
+    public static String[] getExecutionOutput(File executionFile, String arg1) {
         executionFile.setReadable(true);
         executionFile.setExecutable(true);
         Runtime runtime = Runtime.getRuntime();
         String  output  = "";
         try {
-            String[]          commands = {"./" + executionFile.getPath(), utcTime};
+            String[]          commands = {"./" + executionFile.getPath(), arg1};
             Process           process  = runtime.exec(commands);
             InputStream       is       = process.getInputStream();
             InputStreamReader isr      = new InputStreamReader(is);

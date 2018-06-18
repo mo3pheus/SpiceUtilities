@@ -21,8 +21,8 @@
 *	Defines Section
 *****************************************************************************************************/
 #define SEPARATOR "====================================================================================\n"
-#define LEAP_SECONDS_KERNEL "/home/sanket/Documents/Data/curiosityData/curiositySpiceData2016_2017/mslsp_1000/data/lsk/naif0012.tls"
-#define SCLK_KERNEL "/home/sanket/Documents/workspace/SpiceUtilities/src/main/resources/mslsp_1000/data/sclk/msl_lmst_ops120808_v1.tsc"
+#define LEAP_SECONDS_KERNEL "spiceCalcData/naif0012.tls"
+#define SCLK_KERNEL "spiceCalcData/msl_lmst_ops120808_v1.tsc"
 #define STR_LEN 50
 
 /* Main Call 

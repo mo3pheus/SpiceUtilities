@@ -5,24 +5,24 @@
 #include "SpiceUsr.h"
 #include <string.h>
 
-#define GENERIC_LSK "/home/sanket/Documents/Data/curiosityData/curiositySpiceData2016_2017/mslsp_1000/data/lsk/naif0012.tls"
-#define CURIOSITY_SCLK "/home/sanket/Documents/Data/curiosityData/curiositySpiceData2016_2017/mslsp_1000/data/sclk/msl_lmst_ops120808_v1.tsc"
-#define CURIOSITY_SCLK_2 "/home/sanket/Documents/Data/curiosityData/curiositySpiceData2016_2017/mslsp_1000/data/sclk/msl_76_sclkscet_refit_n4.tsc"
-#define MERGED_MISSION_DATA_SPK "/home/sanket/Documents/workspace/SpiceUtilities/src/main/resources/mslsp_1000/data/spk/mergedCuriosityData.spk"
-#define SOLAR_SYSTEM_EPHEMERIS_SPK "/home/sanket/Documents/Data/SpiceData/C/cspice/doc/html/lessons/remote_sensing/kernels/spk/981005_PLTEPH-DE405S.bsp"
-#define CURIOSITY_HGA_CK_1 "/home/sanket/Documents/workspace/SpiceUtilities/src/main/resources/mslsp_1000/data/ck/"
-#define CURIOSITY_FRAMES_KERNEL "/home/sanket/Documents/workspace/SpiceUtilities/src/main/resources/mslsp_1000/data/fk/msl_v08.tf"
-#define CURIOSITY_PCK "/home/sanket/Documents/workspace/SpiceUtilities/src/main/resources/mslsp_1000/data/pck/pck00008.tpc"
+#define GENERIC_LSK "spiceCalcData/naif0012.tls"
+#define CURIOSITY_SCLK "spiceCalcData/msl_lmst_ops120808_v1.tsc"
+#define CURIOSITY_SCLK_2 "spiceCalcData/msl_76_sclkscet_refit_n4.tsc"
+#define MERGED_MISSION_DATA_SPK "spiceCalcData/mergedCuriosityData.spk"
+#define SOLAR_SYSTEM_EPHEMERIS_SPK "spiceCalcData/981005_PLTEPH-DE405S.bsp"
+#define MSL_EPHEMERIS_SPK "spiceCalcData/de425s.bsp"
+#define CURIOSITY_FRAMES_KERNEL "spiceCalcData/msl_v08.tf"
+#define CURIOSITY_PCK "spiceCalcData/pck00008.tpc"
 
-#define CURIOSITY_CK_KERNEL_1	"/home/sanket/Documents/workspace/SpiceUtilities/src/main/resources/mslsp_1000/data/ck/msl_surf_hga_tlm_1159_1293_v1.bc"
-#define CURIOSITY_CK_KERNEL_2 "/home/sanket/Documents/workspace/SpiceUtilities/src/main/resources/mslsp_1000/data/ck/msl_surf_hga_tlm_1293_1417_v1.bc"
-#define CURIOSITY_CK_KERNEL_3 "/home/sanket/Documents/workspace/SpiceUtilities/src/main/resources/mslsp_1000/data/ck/msl_surf_hga_tlm_1417_1514_v1.bc"
-#define CURIOSITY_CK_KERNEL_4 "/home/sanket/Documents/workspace/SpiceUtilities/src/main/resources/mslsp_1000/data/ck/msl_surf_hga_tlm_1514_1648_v1.bc"
+#define CURIOSITY_CK_KERNEL_1 "spiceCalcData/msl_surf_hga_tlm_1159_1293_v1.bc"
+#define CURIOSITY_CK_KERNEL_2 "spiceCalcData/msl_surf_hga_tlm_1293_1417_v1.bc"
+#define CURIOSITY_CK_KERNEL_3 "spiceCalcData/msl_surf_hga_tlm_1417_1514_v1.bc"
+#define CURIOSITY_CK_KERNEL_4 "spiceCalcData/msl_surf_hga_tlm_1514_1648_v1.bc"
 
-#define CURIOSITY_ROVER_CK_1 "/home/sanket/Documents/workspace/SpiceUtilities/src/main/resources/mslsp_1000/data/ck/msl_surf_rover_tlm_1159_1293_v1.bc"
-#define CURIOSITY_ROVER_CK_2 "/home/sanket/Documents/workspace/SpiceUtilities/src/main/resources/mslsp_1000/data/ck/msl_surf_rover_tlm_1293_1417_v1.bc"
-#define CURIOSITY_ROVER_CK_3 "/home/sanket/Documents/workspace/SpiceUtilities/src/main/resources/mslsp_1000/data/ck/msl_surf_rover_tlm_1417_1514_v1.bc"
-#define CURIOSITY_ROVER_CK_4 "/home/sanket/Documents/workspace/SpiceUtilities/src/main/resources/mslsp_1000/data/ck/msl_surf_rover_tlm_1514_1648_v1.bc"
+#define CURIOSITY_ROVER_CK_1 "spiceCalcData/msl_surf_rover_tlm_1159_1293_v1.bc"
+#define CURIOSITY_ROVER_CK_2 "spiceCalcData/msl_surf_rover_tlm_1293_1417_v1.bc"
+#define CURIOSITY_ROVER_CK_3 "spiceCalcData/msl_surf_rover_tlm_1417_1514_v1.bc"
+#define CURIOSITY_ROVER_CK_4 "spiceCalcData/msl_surf_rover_tlm_1514_1648_v1.bc"
 
 #define STR_LEN 50
 #define SEPARATOR "\n=======================================================================\n"
@@ -35,10 +35,11 @@ void main(int argc, char** argv){
 	*	Load the required kernels
 	--------------------------------------------------------------------------------------------*/
 	furnsh_c(GENERIC_LSK);
+	furnsh_c(MSL_EPHEMERIS_SPK);
 	furnsh_c(CURIOSITY_SCLK);
 	furnsh_c(CURIOSITY_SCLK_2);
 	furnsh_c(MERGED_MISSION_DATA_SPK);
-	furnsh_c(SOLAR_SYSTEM_EPHEMERIS_SPK);
+	//furnsh_c(SOLAR_SYSTEM_EPHEMERIS_SPK);
 	furnsh_c(CURIOSITY_FRAMES_KERNEL);
 	furnsh_c(CURIOSITY_PCK);
 	furnsh_c(CURIOSITY_CK_KERNEL_1);
@@ -54,7 +55,7 @@ void main(int argc, char** argv){
 	* Variable declarations
 	--------------------------------------------------------------------------------------------*/
 	SpiceChar userUTCTime[STR_LEN];                 /* user entered UTC Time           */
-        SpiceDouble et,spacecraftTime;                  /* ephemerisTime, spacecraftTime   */
+    SpiceDouble et,spacecraftTime;                  /* ephemerisTime, spacecraftTime   */
 	SpiceDouble lightTimeMSLEarth;			/* one way light time earth to msl */
 	static SpiceChar sclkch[100];                   /* spacecraftTime String           */
 	SpiceDouble bfixst[6];				/* antenna boresight vector        */
