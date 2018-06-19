@@ -8,7 +8,7 @@ import java.io.*;
 
 public class PositionUtils {
     private static final double ALIGNMENT_THRESHOLD = 1.0d;
-    private              File   positionsCalcFile   = ExecUtils.getExecutionFile("/POSITIONS/finalPositionCalc");
+    private              File   positionsCalcFile   = ExecUtils.getExecutionFile("/genericSpice/Position/finalComp.out");
     private              String utcTime             = "";
     private              Logger logger              = LoggerFactory.getLogger(PositionUtils.class);
 

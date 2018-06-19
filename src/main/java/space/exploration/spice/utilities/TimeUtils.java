@@ -28,7 +28,7 @@ public class TimeUtils {
     }
 
     public TimeUtils() {
-        clockFile = ExecUtils.getExecutionFile("/SCLK/msl");
+        clockFile = ExecUtils.getExecutionFile("/genericSpice/MSLClock/msl");
     }
 
     public void updateClock(String utcTime) {
