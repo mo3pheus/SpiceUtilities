@@ -72,7 +72,7 @@ public class ExecUtils {
         Runtime runtime = Runtime.getRuntime();
         String  output  = "";
         try {
-            String[]          commands = {"./" + executionFile.getPath(), arg1};
+            String[]          commands = {"./" + executionFile.getPath(), utcTime};
             Process           process  = runtime.exec(commands);
             InputStream       is       = process.getInputStream();
             InputStreamReader isr      = new InputStreamReader(is);
