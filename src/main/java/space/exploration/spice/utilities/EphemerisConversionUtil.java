@@ -30,7 +30,7 @@ public class EphemerisConversionUtil {
     }
 
     public EphemerisConversionUtil() {
-        clockFile = ExecUtils.getExecutionFile("/SCLK/ephemeris.out");
+        clockFile = ExecUtils.getExecutionFile("/genericSpice/Ephemeris/ephemeris.out");
     }
 
     public void updateClock(String tdbTime) {
