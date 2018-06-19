@@ -21,8 +21,8 @@
 *	Defines Section
 *****************************************************************************************************/
 #define SEPARATOR "====================================================================================\n"
-#define LEAP_SECONDS_KERNEL "dependencies/naif0012.tls"
-#define SCLK_KERNEL "dependencies/msl_lmst_ops120808_v1.tsc"
+#define LEAP_SECONDS_KERNEL "genericSpice/MSLClock/dependencies/naif0012.tls"
+#define SCLK_KERNEL "genericSpice/MSLClock/dependencies/msl_lmst_ops120808_v1.tsc"
 #define STR_LEN 50
 
 /* Main Call 

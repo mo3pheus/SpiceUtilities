@@ -5,23 +5,23 @@
 #include "SpiceUsr.h"
 #include <string.h>
 
-#define GENERIC_LSK "dependencies/naif0012.tls"
-#define CURIOSITY_SCLK "dependencies/msl_lmst_ops120808_v1.tsc"
-#define CURIOSITY_SCLK_2 "dependencies/msl_76_sclkscet_refit_n4.tsc"
-#define MERGED_MISSION_DATA_SPK "dependencies/mergedCuriosityData.spk"
-#define SOLAR_SYSTEM_EPHEMERIS_SPK "dependencies/981005_PLTEPH-DE405S.bsp"
-#define CURIOSITY_FRAMES_KERNEL "dependencies/msl_v08.tf"
-#define CURIOSITY_PCK "dependencies/pck00008.tpc"
+#define GENERIC_LSK "genericSpice/Position/dependencies/naif0012.tls"
+#define CURIOSITY_SCLK "genericSpice/Position/dependencies/msl_lmst_ops120808_v1.tsc"
+#define CURIOSITY_SCLK_2 "genericSpice/Position/dependencies/msl_76_sclkscet_refit_n4.tsc"
+#define MERGED_MISSION_DATA_SPK "genericSpice/Position/dependencies/mergedCuriosityData.spk"
+#define SOLAR_SYSTEM_EPHEMERIS_SPK "genericSpice/Position/dependencies/981005_PLTEPH-DE405S.bsp"
+#define CURIOSITY_FRAMES_KERNEL "genericSpice/Position/dependencies/msl_v08.tf"
+#define CURIOSITY_PCK "genericSpice/Position/dependencies/pck00008.tpc"
 
-#define CURIOSITY_CK_KERNEL_1	"dependencies/msl_surf_hga_tlm_1159_1293_v1.bc"
-#define CURIOSITY_CK_KERNEL_2 "dependencies/msl_surf_hga_tlm_1293_1417_v1.bc"
-#define CURIOSITY_CK_KERNEL_3 "dependencies/msl_surf_hga_tlm_1417_1514_v1.bc"
-#define CURIOSITY_CK_KERNEL_4 "dependencies/msl_surf_hga_tlm_1514_1648_v1.bc"
+#define CURIOSITY_CK_KERNEL_1	"genericSpice/Position/dependencies/msl_surf_hga_tlm_1159_1293_v1.bc"
+#define CURIOSITY_CK_KERNEL_2 "genericSpice/Position/dependencies/msl_surf_hga_tlm_1293_1417_v1.bc"
+#define CURIOSITY_CK_KERNEL_3 "genericSpice/Position/dependencies/msl_surf_hga_tlm_1417_1514_v1.bc"
+#define CURIOSITY_CK_KERNEL_4 "genericSpice/Position/dependencies/msl_surf_hga_tlm_1514_1648_v1.bc"
 
-#define CURIOSITY_ROVER_CK_1 "dependencies/msl_surf_rover_tlm_1159_1293_v1.bc"
-#define CURIOSITY_ROVER_CK_2 "dependencies/msl_surf_rover_tlm_1293_1417_v1.bc"
-#define CURIOSITY_ROVER_CK_3 "dependencies/msl_surf_rover_tlm_1417_1514_v1.bc"
-#define CURIOSITY_ROVER_CK_4 "dependencies/msl_surf_rover_tlm_1514_1648_v1.bc"
+#define CURIOSITY_ROVER_CK_1 "genericSpice/Position/dependencies/msl_surf_rover_tlm_1159_1293_v1.bc"
+#define CURIOSITY_ROVER_CK_2 "genericSpice/Position/dependencies/msl_surf_rover_tlm_1293_1417_v1.bc"
+#define CURIOSITY_ROVER_CK_3 "genericSpice/Position/dependencies/msl_surf_rover_tlm_1417_1514_v1.bc"
+#define CURIOSITY_ROVER_CK_4 "genericSpice/Position/dependencies/msl_surf_rover_tlm_1514_1648_v1.bc"
 
 #define STR_LEN 50
 #define SEPARATOR "\n=======================================================================\n"

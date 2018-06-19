@@ -11,6 +11,7 @@ public class EphemerisConversionUtil {
     //
 
     File clockFile = null;
+    private String fileDirectory = "";
     private double ephemerisTime = 0.0d;
     private String calendarTime  = "";
     private String sclkTime      = "";
@@ -30,11 +31,17 @@ public class EphemerisConversionUtil {
     }
 
     public EphemerisConversionUtil() {
-        clockFile = ExecUtils.getExecutionFile("/genericSpice/Ephemeris/ephemeris.out");
+        fileDirectory = "genericSpice/Ephemeris/";
+        clockFile = ExecUtils.getExecutionsFile("/genericSpice/Ephemeris/ephemeris.out");
+    }
+
+    public EphemerisConversionUtil(String ephemerisFile){
+        clockFile = ExecUtils.getExecutionsFile(ephemerisFile);
     }
 
     public void updateClock(String tdbTime) {
         String[] outputParts = ExecUtils.getExecutionOutput(clockFile, tdbTime);
+        //String[] outputParts = ExecUtils.getGenericExecutionOutput(fileDirectory, clockFile, tdbTime);
         sclkTime = outputParts[TimeUtils.SCHEMA.SCLK_STR.value];
         ephemerisTime = Double.parseDouble(outputParts[TimeUtils.SCHEMA.EPHEMERIS_TIME.value]);
         calendarTime = outputParts[TimeUtils.SCHEMA.CALENDAR_TIME.value];

@@ -8,12 +8,16 @@ import java.io.*;
 
 public class PositionUtils {
     private static final double ALIGNMENT_THRESHOLD = 1.0d;
-    private              File   positionsCalcFile   = ExecUtils.getExecutionFile("/genericSpice/Position/finalComp.out");
+    private              File   positionsCalcFile   = null;
     private              String utcTime             = "";
     private              Logger logger              = LoggerFactory.getLogger(PositionUtils.class);
 
     public PositionUtils() {
 
+    }
+
+    public PositionUtils(String positionsCalcFile) {
+        this.positionsCalcFile = ExecUtils.getExecutionsFile(positionsCalcFile);
     }
 
     public void setUtcTime(String utcTime) {

@@ -27,7 +27,46 @@ public class ExecUtils {
         return executionsFile;
     }
 
-    public static String[] getExecutionOutput(File executionFile, String arg1) {
+    public static File getExecutionsFile(String filePath) {
+        File executionsFile = new File(filePath);
+        executionsFile.setReadable(true);
+        executionsFile.setExecutable(true);
+        return executionsFile;
+    }
+
+
+    public static String[] getGenericExecutionOutput(String fileDirectory, File executionFile, String utcTime) {
+        executionFile.setReadable(true);
+        executionFile.setExecutable(true);
+        Runtime runtime = Runtime.getRuntime();
+
+        String[] cdPathCmd = { "cd " + fileDirectory};
+        try {
+            runtime.exec(cdPathCmd);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        String  output  = "";
+        try {
+            String[]          commands = {"./" + executionFile.getPath(), utcTime};
+            Process           process  = runtime.exec(commands);
+            InputStream       is       = process.getInputStream();
+            InputStreamReader isr      = new InputStreamReader(is);
+            BufferedReader    br       = new BufferedReader(isr);
+            output = br.readLine();
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return output.split(",");
+    }
+
+
+
+
+    public static String[] getExecutionOutput(File executionFile, String utcTime) {
         executionFile.setReadable(true);
         executionFile.setExecutable(true);
         Runtime runtime = Runtime.getRuntime();
