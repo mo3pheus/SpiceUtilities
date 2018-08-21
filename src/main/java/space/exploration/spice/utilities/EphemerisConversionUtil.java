@@ -32,7 +32,7 @@ public class EphemerisConversionUtil {
 
     public EphemerisConversionUtil() {
         fileDirectory = "genericSpice/Ephemeris/";
-        clockFile = ExecUtils.getExecutionsFile("/genericSpice/Ephemeris/ephemeris.out");
+        clockFile = ExecUtils.getExecutionsFile("genericSpice/Ephemeris/ephemeris.out");
     }
 
     public EphemerisConversionUtil(String ephemerisFile){

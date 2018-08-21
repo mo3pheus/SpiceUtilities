@@ -69,7 +69,7 @@ void main(int argc, char** argv){
         /* Check if arguments have been passed */
          int i = 0;
 	 int argumentLength = strlen(argv[1]);
-         for(i=0; i < argumentLength; i++)
+         for(i=0; i < strlen(argv[1]); i++)
 	         {
         	 	if(argv[1][i] == '~')
                         {
